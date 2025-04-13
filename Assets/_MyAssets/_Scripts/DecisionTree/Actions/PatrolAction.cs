@@ -5,5 +5,22 @@ using UnityEngine;
 // TODO: Fill in for Lab 7a.
 public class PatrolAction : ActionNode
 {
-    
+    public PatrolAction()
+    {
+        name = "Patrol Action";
+    }
+
+    public override void Action()
+    {
+        // Enter functionality for agent.
+        if(Agent.GetComponent<Starship>().state  != ActionState.PATROL)
+        {
+            Debug.Log("Starship " + name);
+            Starship ss = Agent.GetComponent<Starship>();
+            ss.state = ActionState.PATROL;
+            // Custom enter actions
+        }
+        // every frame
+        Debug.Log("Performing " + name);
+    }
 }
