@@ -28,7 +28,7 @@ public class AgentObject : MonoBehaviour
     {
         Debug.Log("Starting Agent.");
         // TODO: Modify for Lab 7a...
-        if(m_target != null)
+        if(m_target !=null)
         {
             TargetPosition = m_target.position;
         }
