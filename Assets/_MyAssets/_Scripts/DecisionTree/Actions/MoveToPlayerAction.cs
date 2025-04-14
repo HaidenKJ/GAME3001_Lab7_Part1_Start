@@ -13,12 +13,16 @@ public class MoveToPlayerAction : ActionNode
     public override void Action()
     {
         // Enter functionality for agent.
-        if(Agent.GetComponent<Starship>().state  != ActionState.MOVE_TO_PLAYER)
+        if(Agent.GetComponent<AgentObject>().state  != ActionState.MOVE_TO_PLAYER)
         {
             Debug.Log("Starship " + name);
-            Starship ss = Agent.GetComponent<Starship>();
-            ss.state = ActionState.MOVE_TO_PLAYER;
+            AgentObject ao = Agent.GetComponent<AgentObject>();
+            ao.state = ActionState.MOVE_TO_PLAYER;
             // Custom enter actions
+            if(AgentScript is CloseCombatEnemy cce)
+            {
+                // do close combat things
+            }
         }
         // every frame
         Debug.Log("Performing " + name);

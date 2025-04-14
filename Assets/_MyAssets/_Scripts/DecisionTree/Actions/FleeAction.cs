@@ -3,29 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // TODO: Fill in for Lab 7a.
-public class AttackAction : ActionNode
+public class FleeAction : ActionNode // Only for ranged combat enemy
 {
-    public AttackAction()
+    public FleeAction()
     {
-        name = "Attack Action";
+        name = "Flee Action";
     }
 
     public override void Action()
     {
         // Enter functionality for action
-        if(Agent.GetComponent<AgentObject>().state != ActionState.ATTACK)
+        if(Agent.GetComponent<AgentObject>().state != ActionState.FLEE)
         {
             Debug.Log("Starting " + name);
             AgentObject ao = Agent.GetComponent<AgentObject>();
-            ao.state = ActionState.ATTACK;
+            ao.state = ActionState.FLEE;
             // Custom enter actions.
-            if(AgentScript is CloseCombatEnemy cce)
+            if(AgentScript is RangedCombatEnemy rce)
             {
-                // If yes do close combat thing
-            }
-            else if(AgentScript is RangedCombatEnemy rce)
-            {
-                // Do Ranged Combat thing
+                // DO Ranged combat thing
             }
         }
         // Every frame
