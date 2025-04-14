@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473324425165923427}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5290083871683047265}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &6261042490349576891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -94,11 +94,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5290083871683047265}
   - component: {fileID: 7318353877098509351}
-  - component: {fileID: 2475762427851674335}
   - component: {fileID: 8759129482228928705}
-  - component: {fileID: 1938365734897496708}
+  - component: {fileID: 3274993536194102350}
+  - component: {fileID: 2205655564324019317}
   m_Layer: 0
-  m_Name: ShipParent
+  m_Name: CloseCombatEnemy
   m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,8 +147,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &2475762427851674335
-BoxCollider2D:
+--- !u!114 &8759129482228928705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6073611016518656805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa74ed3aad54aa44fbcc24ea94723ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridIndex: {x: 0, y: 0}
+--- !u!60 &3274993536194102350
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -182,17 +195,22 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.5}
-  m_EdgeRadius: 0
---- !u!114 &8759129482228928705
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 0.45245457}
+      - {x: -0.25910336, y: 0.29698303}
+      - {x: -0.25371403, y: -0.4234172}
+      - {x: 0.25685132, y: -0.42393017}
+      - {x: 0.2651205, y: 0.33308512}
+  m_UseDelaunayMesh: 0
+--- !u!114 &2205655564324019317
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,29 +219,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6073611016518656805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa74ed3aad54aa44fbcc24ea94723ae5, type: 3}
+  m_Script: {fileID: 11500000, guid: f9ab3cae09aded0458e050e411c6537d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridIndex: {x: 0, y: 0}
---- !u!114 &1938365734897496708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6073611016518656805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a39eb3d5a0af1f4ba06e3a6ca705d69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_target: {fileID: 0}
-  patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  movementSpeed: 4
+  m_target: {fileID: 7681081816824406026, guid: 65b303e39d61fdc4fa07687bb9a80558, type: 3}
+  patrolPoints: []
+  pointRadius: 1
+  movementSpeed: 1
   rotationSpeed: 90
   whiskerLength: 5
   whiskerAngle: 0
+  testTarget: {fileID: 7681081816824406026, guid: 65b303e39d61fdc4fa07687bb9a80558, type: 3}
