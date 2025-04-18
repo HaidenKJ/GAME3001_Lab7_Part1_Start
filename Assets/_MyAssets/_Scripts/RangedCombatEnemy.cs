@@ -49,7 +49,7 @@ public class RangedCombatEnemy : AgentObject
         dt.HealthNode.IsHealthy = true;
         dt.HitNode.IsHit = false;
         
-        dt.RadiusNode.IsWithinRadius = (Vector3.Distance(transform.position, testTarget.position) <= sensingRadius);
+        dt.RadiusNode.IsWithinRadius = Vector3.Distance(transform.position, testTarget.position) <= sensingRadius;
 
         // TODO: Update for Lab 7a.
         dt.MakeDecision();
