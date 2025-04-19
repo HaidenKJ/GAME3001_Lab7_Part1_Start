@@ -40,6 +40,9 @@ public class GridManager : MonoBehaviour
     private int columns = 16;
     private List<GameObject> mines = new List<GameObject>();
 
+    [SerializeField] GameObject EnemyShip;
+    [SerializeField] GameObject TargetPlayer;
+
     public static GridManager Instance { get; private set; } // Static object of the class.
 
     void Awake()
@@ -278,10 +281,10 @@ public class GridManager : MonoBehaviour
         }
         else
         {
-            GameObject player = GameObject.FindWithTag("Ship");
-            Vector3 shipPos = player.transform.position;
-            GameObject planet = GameObject.FindWithTag("Planet");
-            Vector3 planetPos = planet.transform.position;
+            GameObject Enemy = EnemyShip; // GameObject.FindWithTag("Ship");
+            Vector3 shipPos = Enemy.transform.position;
+            GameObject target = TargetPlayer;
+            Vector3 planetPos = target.transform.position;
             foreach (GameObject go in grid)
             {
                 if (go == null) continue;
