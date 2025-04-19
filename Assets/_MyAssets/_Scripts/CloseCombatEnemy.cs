@@ -35,7 +35,6 @@ public class CloseCombatEnemy : AgentObject
 
     void Update()
     {
-        // bool hit = CastWhisker(whiskerAngle, Color.red);
         // transform.Rotate(0f, 0f, Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime);
 
         //if (TargetPosition != null)
@@ -49,6 +48,15 @@ public class CloseCombatEnemy : AgentObject
         //dt.HealthNode.IsHealthy = true;
         //dt.HitNode.IsHit = false;
         dt.RadiusNode.IsWithinRadius = Vector3.Distance(transform.position, testTarget.position) <= sensingRadius;
+        if(dt.RadiusNode.IsWithinRadius)
+        {
+            Vector2 direction = (testTarget.position - transform.position).normalized;
+            float angleInRadians = Mathf.Atan2(direction.y, direction.x);
+            whiskerAngle = angleInRadians * Mathf.Rad2Deg;
+            bool hit = CastWhisker(whiskerAngle, Color.red);
+
+            dt.LOSNode.HasLOS = hit;
+        }
 
         // TODO: Update for Lab 7a.
         dt.MakeDecision();
@@ -102,7 +110,7 @@ public class CloseCombatEnemy : AgentObject
         Color rayColor = color;
 
         // Calculate the direction of the whisker.
-        Vector2 whiskerDirection = Quaternion.Euler(0, 0, angle) * transform.right;
+        Vector2 whiskerDirection = Quaternion.Euler(0, 0, angle) * Vector2.right;
 
         if (no.HasLOS(gameObject, "Planet", whiskerDirection, whiskerLength))
         {
